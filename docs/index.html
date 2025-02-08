@@ -4,10 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to My Web Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .game-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .game-item {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .game-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-item a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .game-item a:hover {
+      color: #007bff;
+    }
+  </style>
 </head>
 <body>
   <h1>Welcome to My Web Game</h1>
-  <!-- 웹게임 폴더 안에 있는 ClickGame_20250208 파일을 iframe으로 불러옵니다 -->
-  <iframe src="WebGame/ClickGame_20250208.html" width="800" height="600"></iframe>
+
+  <div class="game-list" id="game-list"></div>
+
+  <script>
+    // 게임 정보 배열
+    const games = [
+      { name: "Click Game", link: "WebGame/ClickGame_20250208.html" },
+      { name: "Another Game", link: "WebGame/AnotherGame.html" }
+      // 추가적인 게임을 배열에 추가하면 자동으로 리스트에 반영됩니다.
+    ];
+
+    // 게임 리스트를 동적으로 생성하는 함수
+    function generateGameList() {
+      const gameListContainer = document.getElementById("game-list");
+      gameListContainer.innerHTML = ""; // 기존 리스트 초기화
+
+      games.forEach(game => {
+        const gameItem = document.createElement("div");
+        gameItem.classList.add("game-item");
+
+        const gameLink = document.createElement("a");
+        gameLink.href = game.link;
+        gameLink.target = "_blank";
+        gameLink.textContent = game.name;
+
+        gameItem.appendChild(gameLink);
+        gameListContainer.appendChild(gameItem);
+      });
+    }
+
+    // 페이지가 로드될 때 게임 리스트 생성
+    window.onload = generateGameList;
+  </script>
 </body>
 </html>
