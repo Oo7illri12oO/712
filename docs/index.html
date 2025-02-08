@@ -50,32 +50,32 @@
   <script>
     // 게임 정보 배열
     const games = [
-      { name: "Click Game", link: "WebGame/ClickGame_20250208.html" },
-      { name: "Guess the Number", link: "WebGame/GuessTheNumber_20250208.html" } // 파일명 수정
-      // 추가적인 게임을 배열에 추가하면 자동으로 리스트에 반영됩니다.
+      { name: "Click Game", link: "../WebGame/ClickGame_20250208.html" },  // 경로 수정
+      { name: "Guess the Number", link: "../WebGame/GuessTheNumber_20250208.html" }  // 경로 수정
     ];
-
+  
     // 게임 리스트를 동적으로 생성하는 함수
     function generateGameList() {
       const gameListContainer = document.getElementById("game-list");
       gameListContainer.innerHTML = ""; // 기존 리스트 초기화
-
+  
       games.forEach(game => {
         const gameItem = document.createElement("div");
         gameItem.classList.add("game-item");
-
+  
         const gameLink = document.createElement("a");
         gameLink.href = game.link;
         gameLink.target = "_blank";
         gameLink.textContent = game.name;
-
+  
         gameItem.appendChild(gameLink);
         gameListContainer.appendChild(gameItem);
       });
     }
-
+  
     // 페이지가 로드될 때 게임 리스트 생성
     window.onload = generateGameList;
-  </script>
+</script>
+  
 </body>
 </html>
