@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .game-container {
+      margin-top: 50px;
+    }
+
+    .input-field {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guess the Number Game</h1>
+
+  <div class="game-container">
+    <p>I'm thinking of a number between 1 and 100. Can you guess it?</p>
+    <input type="number" id="guess" class="input-field" placeholder="Enter your guess" />
+    <button class="button" onclick="checkGuess()">Guess</button>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    // 1에서 100 사이의 랜덤 숫자 생성
+    const secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      const userGuess = document.getElementById("guess").value;
+      attempts++;
+
+      const messageElement = document.getElementById("message");
+
+      if (userGuess == secretNumber) {
+        messageElement.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+        messageElement.style.color = "green";
+      } else if (userGuess < secretNumber) {
+        messageElement.textContent = "Too low! Try again.";
+        messageElement.style.color = "orange";
+      } else {
+        messageElement.textContent = "Too high! Try again.";
+        messageElement.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
