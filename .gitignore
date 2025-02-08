@@ -1,4 +1,0 @@
-# Ignore Visual Studio Code app files
-Visual Studio Code.app/Visual Studio Code.app/
-echo ".DS_Store" >> .gitignore
-git add .gitignore
