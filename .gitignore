@@ -1,4 +1,2 @@
 # Ignore Visual Studio Code app files
-Visual Studio Code.app/
-/Users/resonate712/Desktop/아카이브\ IT/Visual\ Studio\ Code.app/
-echo "/Users/resonate712/Desktop/아카이브 IT/Visual Studio Code.app" >> .gitignore
+Visual Studio Code.app/Visual Studio Code.app/
