@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Web Game</title>
+  <title>Web Game Index</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
     }
-
+    h1 {
+      color: #333;
+    }
     .game-list {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
+      margin-top: 30px;
     }
-
     .game-item {
       background-color: #f1f1f1;
       padding: 20px;
@@ -25,37 +27,55 @@
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.3s;
     }
-
     .game-item:hover {
       transform: scale(1.05);
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     }
-
     .game-item a {
       text-decoration: none;
       color: #333;
       font-size: 18px;
     }
-
     .game-item a:hover {
       color: #007bff;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to My Web Game</h1>
+  <h1>Welcome to My Web Game Collection</h1>
 
-  <div class="game-list" id="game-list"></div>
+  <div class="game-list" id="game-list">
+    <!-- 게임 목록을 동적으로 삽입 -->
+  </div>
 
   <script>
     // 게임 정보 배열
     const games = [
-      { name: "Click Game", link: "WebGame/ClickGame_20250208.html" }, // 'docs' 경로 제외
-      { name: "Guess the Number", link: "WebGame/GuessTheNumber_20250208.html" } // 'docs' 경로 제외
+      { name: "Click Game", link: "WebGame/ClickGame_20250208.html" },
+      { name: "Guess the Number", link: "WebGame/GuessTheNumber_20250208.html" }
     ];
+
+    // 게임 목록 생성 함수
+    function generateGameList() {
+      const gameListContainer = document.getElementById("game-list");
+      gameListContainer.innerHTML = ""; // 기존 리스트 초기화
+
+      games.forEach(game => {
+        const gameItem = document.createElement("div");
+        gameItem.classList.add("game-item");
+
+        const gameLink = document.createElement("a");
+        gameLink.href = game.link;
+        gameLink.target = "_blank";
+        gameLink.textContent = game.name;
+
+        gameItem.appendChild(gameLink);
+        gameListContainer.appendChild(gameItem);
+      });
+    }
+
+    // 페이지가 로드되면 게임 목록 생성
+    window.onload = generateGameList;
   </script>
-  
-  
-  
 </body>
 </html>
